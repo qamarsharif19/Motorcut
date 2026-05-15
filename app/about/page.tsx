@@ -374,6 +374,7 @@ export default function ComponentsGallery() {
               height={42}
               priority
               className="brand-wordmark"
+              style={{ width: "auto" }}
             />
             <span className="gallery-eyebrow">Components · V4 marketing site</span>
             <h1 className="gallery-title">Components, in one place.</h1>

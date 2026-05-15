@@ -51,6 +51,7 @@ export const Footer = React.forwardRef<HTMLElement, FooterProps>(
                 width={160}
                 height={32}
                 className="mc-footer__brand-img"
+                style={{ width: "auto" }}
               />
             </Link>
             <p className="mc-footer__tagline">{tagline}</p>

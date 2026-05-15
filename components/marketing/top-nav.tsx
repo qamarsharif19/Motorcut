@@ -101,6 +101,7 @@ export function TopNav({
             height={32}
             priority
             className="top-nav__brand-img"
+            style={{ width: "auto" }}
           />
         </Link>
 
@@ -177,6 +178,7 @@ export function TopNav({
             width={132}
             height={28}
             className="top-nav__brand-img"
+            style={{ width: "auto" }}
           />
           <button
             type="button"
