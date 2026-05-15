@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@import "./styles/tokens.css" layer(base);
+@import "./styles/button.css" layer(components);
+@import "./styles/card.css" layer(components);
+@import "./styles/marketing.css" layer(components);
+@import "./styles/backgrounds.css" layer(components);
+@import "./styles/cards-marketing.css" layer(components);
+@import "./styles/top-nav.css" layer(components);
+@import "./styles/sections-marketing.css" layer(components);
+@import "./styles/gallery.css" layer(components);
+
+/* ═══════════════════════════════════════════════════════════════════
+   MARKETING EXTENSIONS — on top of V4 app tokens
+   ───────────────────────────────────────────────────────────────────
+   The V4 app design system is utility-led (14px body, dense controls,
+   tight dashboards). The marketing site is editorial-led (big hero
+   headlines, generous whitespace, atmosphere). These tokens layer on
+   top of the app foundation — they never override, only extend.
+   ─────────────────────────────────────────────────────────────────── */
+
+@layer base {
+  :root {
+    /* ─── Bridge next/font Manrope into the app's --font-family-sans token ─── */
+    --font-family-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
+
+    /* ─── Display type scale (extends app's --text-5xl/36) ─── */
+    --text-display-sm: 40px;
+    --text-display-md: 56px;
+    --text-display-lg: 72px;
+    --text-display-xl: 96px;
+
+    /* ─── Marketing body scale (bumped from app's 14px default) ─── */
+    --text-body-marketing-sm: 16px;
+    --text-body-marketing-md: 17px;
+    --text-body-marketing-lg: 18px;
+
+    /* ─── Marketing section rhythm (extends spacing scale) ─── */
+    --space-32: 128px;
+
+    /* ─── Marketing container widths ─── */
+    --container-marketing: 1240px;
+    --container-marketing-wide: 1440px;
+
+    /* ─── Marketing section padding ─── */
+    --section-pad-y-sm: 64px;
+    --section-pad-y-md: 96px;
+    --section-pad-y-lg: 112px;
+    --section-pad-y-xl: 128px;
+
+    /* ─── Override --page-glow with a stronger marketing-context atmosphere ─── */
+    --page-glow: radial-gradient(
+      ellipse 1400px 900px at 100% 0%,
+      rgba(var(--brand-rgb-300), 0.22) 0%,
+      rgba(var(--brand-rgb-300), 0.10) 28%,
+      rgba(var(--brand-rgb-300), 0.04) 55%,
+      transparent 78%
+    );
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--n-50);
+    color: var(--n-900);
+    font-family: var(--font-family-sans);
+    font-size: var(--text-body-marketing-sm);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  /* Page surface: brand glow wash from top-right (lifted from app PageSurface) */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--page-glow);
+    pointer-events: none;
+    z-index: var(--z-base);
+  }
+
+  body > * {
+    position: relative;
+    z-index: var(--z-elevated);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  a { color: inherit; text-decoration: none; }
+
+  ::selection {
+    background: rgba(var(--brand-rgb-500), 0.18);
+    color: var(--brand-900);
+  }
+}

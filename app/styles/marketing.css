@@ -1,0 +1,122 @@
+/* ═══════════════════════════════════════════════════════════════════
+   MotorCut Website — Marketing Layout Primitives
+   ───────────────────────────────────────────────────────────────────
+   Container · Section · SectionHeader. Pure presentation, every value
+   from a token. Keeps website-specific layout chrome separate from the
+   app's locked component CSS.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Container ────────────────────────────────────────────────── */
+.mc-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-8); /* 32px desktop */
+  position: relative;
+  z-index: 1; /* sit above any <Background /> sibling at z-base */
+}
+
+@media (max-width: 768px) {
+  .mc-container { padding: 0 var(--space-6); } /* 24px mobile */
+}
+
+.mc-container--compact { max-width: 720px; }
+.mc-container--narrow  { max-width: 880px; }
+.mc-container--default { max-width: var(--container-marketing); }       /* 1240px */
+.mc-container--wide    { max-width: var(--container-marketing-wide); }  /* 1440px */
+
+/* ─── Section base ─────────────────────────────────────────────── */
+.mc-section {
+  position: relative;
+  width: 100%;
+}
+
+/* Padding axis */
+.mc-section--pad-sm { padding: var(--section-pad-y-sm) 0; }   /* 64px */
+.mc-section--pad-md { padding: var(--section-pad-y-md) 0; }   /* 96px */
+.mc-section--pad-lg { padding: var(--section-pad-y-lg) 0; }   /* 112px */
+.mc-section--pad-xl { padding: var(--section-pad-y-xl) 0; }   /* 128px */
+
+@media (max-width: 768px) {
+  .mc-section--pad-sm { padding: var(--space-12) 0; }   /* 48px */
+  .mc-section--pad-md { padding: var(--space-16) 0; }   /* 64px */
+  .mc-section--pad-lg { padding: var(--space-16) 0; }   /* 64px */
+  .mc-section--pad-xl { padding: var(--space-20) 0; }   /* 80px */
+}
+
+/* Surface axis */
+.mc-section--surface-default    { background: transparent; }
+.mc-section--surface-raised     { background: var(--surface); }
+.mc-section--surface-tinted     { background: var(--n-100); }
+.mc-section--surface-brand-soft { background: var(--brand-50); }
+.mc-section--surface-dark       {
+  background: var(--n-900);
+  color: var(--text-on-dark);
+}
+.mc-section--surface-radial     {
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(var(--brand-rgb-300), 0.18) 0%,
+    rgba(var(--brand-rgb-300), 0.06) 32%,
+    transparent 64%
+  );
+}
+
+/* Border axis */
+.mc-section--border-top    { border-top: var(--border-thin) solid rgba(var(--brand-rgb-deep), 0.06); }
+.mc-section--border-bottom { border-bottom: var(--border-thin) solid rgba(var(--brand-rgb-deep), 0.06); }
+.mc-section--border-both   {
+  border-top: var(--border-thin) solid rgba(var(--brand-rgb-deep), 0.06);
+  border-bottom: var(--border-thin) solid rgba(var(--brand-rgb-deep), 0.06);
+}
+
+/* ─── Section header ───────────────────────────────────────────── */
+.mc-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-12);
+}
+
+.mc-section-header--align-left   { align-items: flex-start; text-align: left; max-width: 64ch; }
+.mc-section-header--align-center { align-items: center; text-align: center; max-width: 64ch; margin-left: auto; margin-right: auto; }
+
+.mc-section-header__eyebrow {
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-bold);
+  color: var(--n-500);
+  display: inline-block;
+}
+
+.mc-section-header__title {
+  font-weight: var(--font-weight-bold);
+  color: var(--n-900);
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: var(--tracking-tighter);
+}
+
+.mc-section-header__sub {
+  font-size: var(--text-body-marketing-md);
+  line-height: var(--leading-relaxed);
+  color: var(--n-600);
+  margin: 0;
+}
+
+/* Size axis — title size + line-height tuning */
+.mc-section-header--size-sm .mc-section-header__title { font-size: var(--text-5xl); line-height: 1.1; }   /* 36 */
+.mc-section-header--size-md .mc-section-header__title { font-size: var(--text-display-sm); line-height: 1.08; }   /* 40 */
+.mc-section-header--size-lg .mc-section-header__title { font-size: var(--text-display-md); line-height: 1.05; }   /* 56 */
+.mc-section-header--size-xl .mc-section-header__title { font-size: var(--text-display-lg); line-height: 1.02; letter-spacing: -0.03em; }   /* 72 */
+
+@media (max-width: 768px) {
+  .mc-section-header--size-md .mc-section-header__title { font-size: var(--text-5xl); }                /* 36 */
+  .mc-section-header--size-lg .mc-section-header__title { font-size: var(--text-display-sm); }         /* 40 */
+  .mc-section-header--size-xl .mc-section-header__title { font-size: var(--text-display-md); line-height: 1.05; }  /* 56 */
+}
+
+/* Tone axis — flip text + eyebrow when sat on a dark surface */
+.mc-section-header--tone-on-dark .mc-section-header__title    { color: var(--text-on-dark); }
+.mc-section-header--tone-on-dark .mc-section-header__sub      { color: var(--text-on-dark-muted); }
+.mc-section-header--tone-on-dark .mc-section-header__eyebrow  { color: var(--text-on-dark-subtle); }

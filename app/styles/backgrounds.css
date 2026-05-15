@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════════════════════════════════
+   MotorCut Website — Atmospheric Backgrounds
+   ───────────────────────────────────────────────────────────────────
+   Six variants in 4 symmetric categories (Hero/Section × Light/Dark).
+   pointer-events: none, z-base, absolute-fill the parent.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.mc-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-base);
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HERO · LIGHT
+   ─────────────────────────────────────────────────────────────────── */
+
+/* hero-mesh — soft brand blob top-anchored + secondary glow bottom-right */
+.mc-bg--hero-mesh {
+  background:
+    radial-gradient(ellipse 1100px 800px at 50% -10%,
+      rgba(var(--brand-rgb-500), 0.26) 0%,
+      rgba(var(--brand-rgb-400), 0.12) 24%,
+      rgba(var(--brand-rgb-300), 0.04) 50%,
+      transparent 78%),
+    radial-gradient(ellipse 700px 600px at 90% 110%,
+      rgba(var(--brand-rgb-300), 0.18) 0%,
+      transparent 60%);
+}
+
+/* hero-grid — 3D-tilted floor grid, fades to vanishing point + horizon glow */
+.mc-bg--hero-grid {
+  perspective: 1200px;
+  perspective-origin: 50% 100%;
+  background: var(--n-50);
+}
+.mc-bg--hero-grid::before {
+  content: "";
+  position: absolute;
+  bottom: -10%;
+  left: -50%;
+  width: 200%;
+  height: 140%;
+  background-image:
+    linear-gradient(rgba(var(--brand-rgb-deep), 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--brand-rgb-deep), 0.14) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: rotateX(70deg);
+  transform-origin: 50% 100%;
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 18%, transparent 78%);
+  mask-image:         linear-gradient(to top, #000 0%, #000 18%, transparent 78%);
+}
+/* Horizon glow where the grid meets the vanishing point — gives the floor depth */
+.mc-bg--hero-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 1000px 360px at 50% 60%,
+    rgba(var(--brand-rgb-400), 0.22) 0%,
+    rgba(var(--brand-rgb-300), 0.08) 32%,
+    transparent 72%
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HERO · DARK — mirrors of Hero · Light, on n-950
+   ─────────────────────────────────────────────────────────────────── */
+
+/* hero-dark-mesh — same composition as hero-mesh, dark surface, brighter brand */
+.mc-bg--hero-dark-mesh {
+  background:
+    radial-gradient(ellipse 1100px 800px at 50% -10%,
+      rgba(var(--brand-rgb-400), 0.50) 0%,
+      rgba(var(--brand-rgb-500), 0.26) 22%,
+      rgba(var(--brand-rgb-700), 0.10) 48%,
+      transparent 78%),
+    radial-gradient(ellipse 700px 600px at 90% 110%,
+      rgba(var(--brand-rgb-500), 0.32) 0%,
+      transparent 62%),
+    var(--n-950);
+}
+
+/* hero-dark-grid — Tron-style 3D floor with horizon glow on n-950 */
+.mc-bg--hero-dark-grid {
+  perspective: 1200px;
+  perspective-origin: 50% 100%;
+  background: var(--n-950);
+}
+.mc-bg--hero-dark-grid::before {
+  content: "";
+  position: absolute;
+  bottom: -10%;
+  left: -50%;
+  width: 200%;
+  height: 140%;
+  background-image:
+    linear-gradient(rgba(var(--brand-rgb-300), 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--brand-rgb-300), 0.22) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: rotateX(70deg);
+  transform-origin: 50% 100%;
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 18%, transparent 78%);
+  mask-image:         linear-gradient(to top, #000 0%, #000 18%, transparent 78%);
+}
+/* Tron horizon glow — brighter than the light variant */
+.mc-bg--hero-dark-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 1000px 380px at 50% 60%,
+    rgba(var(--brand-rgb-400), 0.45) 0%,
+    rgba(var(--brand-rgb-500), 0.20) 30%,
+    transparent 70%
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION · LIGHT
+   ─────────────────────────────────────────────────────────────────── */
+
+/* section-glow — subtle top-right corner glow (page default) */
+.mc-bg--section-glow {
+  background: radial-gradient(
+    ellipse 1300px 800px at 100% 0%,
+    rgba(var(--brand-rgb-300), 0.22) 0%,
+    rgba(var(--brand-rgb-300), 0.10) 28%,
+    rgba(var(--brand-rgb-300), 0.04) 55%,
+    transparent 78%
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION · DARK
+   ─────────────────────────────────────────────────────────────────── */
+
+/* section-dark — n-950 + faint top-right brand veil (subtler dark glow) */
+.mc-bg--section-dark {
+  background:
+    radial-gradient(ellipse 900px 600px at 100% 0%,
+      rgba(var(--brand-rgb-400), 0.20) 0%,
+      rgba(var(--brand-rgb-500), 0.08) 30%,
+      transparent 72%),
+    var(--n-950);
+}
