@@ -10,7 +10,12 @@ import {
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
-export const ContainerScroll = () => {
+interface ContainerScrollProps {
+  titleComponent?: React.ReactNode;
+  children?: React.ReactNode;
+}
+
+export const ContainerScroll = ({ titleComponent, children }: ContainerScrollProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -68,6 +73,16 @@ export const ContainerScroll = () => {
         <Header translate={translate} />
 
         <Card rotate={rotate} scale={scale} />
+
+        {titleComponent ? (
+          <div className="mx-auto mt-14 max-w-4xl text-center text-white">
+            {titleComponent}
+          </div>
+        ) : null}
+
+        {children ? (
+          <div className="mt-10">{children}</div>
+        ) : null}
       </div>
     </div>
   );

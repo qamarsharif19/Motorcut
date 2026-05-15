@@ -1,4 +1,5 @@
 "use client";
+import { ContainerScroll } from "@/components/marketing/animated-hero";
 import { Carousel, TestimonialCard } from "@/components/marketing/our-clients";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,8 @@ import { CTASection } from "@/components/marketing/cta-section";
 import { AnnouncementBanner } from "@/components/marketing/announcement-banner";
 import { GallerySidebar, type SidebarGroup } from "@/components/marketing/gallery-sidebar";
 import { ArrowRight, Sparkles, Trash2, Building2, Users, Building, Zap, Layers, ShieldCheck, Camera, Upload, Wand2, Download } from "lucide-react";
+import { use } from "react";
+
 
 const testimonials = [
   {
@@ -385,6 +388,18 @@ export default function ComponentsGallery() {
 
         {/* ─── F00 · Brand mark ─── */}
         <Carousel items={cards} />
+         <ContainerScroll
+        titleComponent={<h1 className="text-3xl font-bold">My Scroll Section</h1>}
+      >
+        {/* Place the content you want to animate on scroll here */}
+        <Section id="my-section" bordered="bottom">
+          {/* Your section content */}
+          <Container>
+            <h2>Scroll-animated section</h2>
+            {/* ... other content ... */}
+          </Container>
+        </Section>
+      </ContainerScroll>
       
         <Section id="brand-mark" bordered="bottom">
           <Container>

@@ -119,14 +119,17 @@ const Carousel = ({items, initialScroll = 0}: iCarouselProps) => {
 					{items.map((item, index) => {
 						return (
 							<motion.div
-							  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{
-    duration: 0.5,
-    delay: 0.2 * index,
-    ease: "easeOut",
-  }}
+								initial={{opacity: 0, y: 20}}
+								                                                                        whileInView={{
+                                                                        opacity: 1,
+                                                                        y: 0,
+                                                                    }}
+                                                                        viewport={{ once: true }}
+                                                                        transition={{
+                                                                               duration: 0.5,
+                                                                               delay: 0.2 * index,
+                                                                               ease: "easeOut",
+                                                                        }}
 								key={`card-${index}`}
 								className="last:pr-[5%] md:last:pr-[33%] rounded-3xl"
 							>
@@ -222,13 +225,31 @@ const TestimonialCard = ({
 					<div className="fixed inset-0 h-screen overflow-hidden z-50">
 						<motion.div
 							initial={{opacity: 0}}
-							animate={{opacity: 1}}
+							                                                                        whileInView={{
+                                                                        opacity: 1,
+                                                                        y: 0,
+                                                                    }}
+                                                                        viewport={{ once: true }}
+                                                                        transition={{
+                                                                               duration: 0.5,
+                                                                               delay: 0.2 * index,
+                                                                               ease: "easeOut",
+                                                                        }}
 							exit={{opacity: 0}}
 							className="bg-red backdrop-blur-lg h-full w-full fixed inset-0"
 						/>
 						<motion.div
 							initial={{opacity: 0}}
-							animate={{opacity: 1}}
+							                                                                        whileInView={{
+                                                                        opacity: 1,
+                                                                        y: 0,
+                                                                    }}
+                                                                        viewport={{ once: true }}
+                                                                        transition={{
+                                                                               duration: 0.5,
+                                                                               delay: 0.2 * index,
+                                                                               ease: "easeOut",
+                                                                        }}
 							exit={{opacity: 0}}
 							ref={containerRef}
 							layoutId={layout ? `card-${testimonial.name}` : undefined}
@@ -343,3 +364,4 @@ const ProfileImage = ({src, alt, ...rest}: ImageProps) => {
 
 // Export the components
 export {Carousel, TestimonialCard, ProfileImage};
+
