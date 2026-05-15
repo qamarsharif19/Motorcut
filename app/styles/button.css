@@ -1,0 +1,163 @@
+/* ═══════════════════════════════════════════════════════════════════
+   MotorCut V4 — Button Component CSS
+   ───────────────────────────────────────────────────────────────────
+   Locked 2026-04-07. Spec: button.md. Preview: button-preview.html.
+   Refactored 2026-04-07 to consume the foundation scales (spacing,
+   type, control-height, border, icon) added to tokens.css.
+   Depends on: ../tokens.css
+   ───────────────────────────────────────────────────────────────────
+   Drop into V3: append this block to src/app/globals.css inside
+   @layer components { ... }
+   ───────────────────────────────────────────────────────────────────
+   ZERO raw values in this file. Every dimension, colour, spacing,
+   font-size, and border-width traces back to a token in tokens.css
+   via var(). Change a token, the whole button system retunes.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Base ─────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+  border-radius: var(--radius-button);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-snug);
+  padding: var(--btn-pad-md);
+  transition: var(--transition-base);
+  position: relative;
+}
+
+.btn:focus-visible { outline: none; }
+
+.btn-sm   { padding: var(--btn-pad-sm); font-size: var(--text-md);  gap: var(--space-1-5); }
+.btn-md   { padding: var(--btn-pad-md); font-size: var(--text-base); gap: var(--space-2); }   /* default */
+.btn-lg   { padding: var(--btn-pad-lg); font-size: var(--text-lg);  gap: calc(var(--space-2) + var(--space-px)); }
+.btn-icon { padding: 0; width: var(--height-icon-button); height: var(--height-icon-button); }
+
+.btn-icon-glyph        { width: var(--icon-md); height: var(--icon-md); flex-shrink: 0; }
+.btn-sm .btn-icon-glyph { width: var(--icon-sm); height: var(--icon-sm); }
+.btn-lg .btn-icon-glyph { width: calc(var(--icon-md) + var(--space-px)); height: calc(var(--icon-md) + var(--space-px)); }
+
+.btn:disabled,
+.btn[data-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* ─── Primary (purple — derived from V3 Create Advert) ──────────────── */
+.btn-primary {
+  background: var(--primary-grad);
+  color: var(--on-primary);
+  box-shadow: var(--primary-inner-top), var(--primary-inner-glow), var(--primary-glow);
+}
+.btn-primary:hover {
+  background: var(--primary-grad-hover);
+  box-shadow: var(--primary-inner-top), var(--primary-inner-glow), var(--primary-glow-hover);
+  transform: translateY(calc(-1 * var(--space-0-5)));
+}
+.btn-primary:active {
+  background: var(--primary-grad-active);
+  transform: translateY(0);
+  box-shadow: var(--primary-inner-top), var(--primary-inner-glow), 0 var(--space-0-5) var(--space-1-5) rgba(var(--brand-rgb-500), 0.25);
+}
+.btn-primary:focus-visible {
+  box-shadow: var(--primary-inner-top), var(--primary-inner-glow), var(--primary-glow), var(--primary-focus-ring);
+}
+
+/* ─── Premium (brighter purple, bigger glow halo) ───────────────────── */
+.btn-premium {
+  background: var(--premium-grad);
+  color: var(--on-primary);
+  box-shadow: var(--premium-inner-top), var(--premium-inner-glow), var(--premium-glow);
+}
+.btn-premium:hover {
+  background: var(--premium-grad-hover);
+  box-shadow: var(--premium-inner-top), var(--premium-inner-glow), var(--premium-glow-hover);
+  transform: translateY(calc(-1 * var(--space-0-5)));
+}
+.btn-premium:active {
+  background: var(--premium-grad-active);
+  transform: translateY(0);
+}
+.btn-premium:focus-visible {
+  box-shadow: var(--premium-inner-top), var(--premium-inner-glow), var(--premium-glow), var(--premium-focus-ring);
+}
+
+/* ─── Secondary (outlined / white) ──────────────────────────────────── */
+.btn-secondary {
+  background: var(--surface);
+  color: var(--n-900);
+  border: var(--border-thin) solid var(--n-200);
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover {
+  border-color: var(--secondary-border-hover);
+  color: var(--secondary-text-hover);
+  background: var(--secondary-bg-hover);
+  box-shadow: var(--secondary-glow-hover);
+  transform: translateY(calc(-1 * var(--space-px)));
+}
+.btn-secondary:active { transform: translateY(0); }
+.btn-secondary:focus-visible { box-shadow: var(--secondary-focus-ring); }
+
+/* ─── Ghost ─────────────────────────────────────────────────────────── */
+.btn-ghost {
+  background: transparent;
+  color: var(--n-700);
+}
+.btn-ghost:hover {
+  background: var(--ghost-bg-hover);
+  color: var(--ghost-text-hover);
+}
+.btn-ghost:focus-visible { box-shadow: var(--secondary-focus-ring); }
+
+/* ─── Destructive (same DNA, error ramp) ────────────────────────────── */
+.btn-destructive {
+  background: var(--destructive-grad);
+  color: var(--on-primary);
+  box-shadow: var(--destructive-inner-top), var(--destructive-inner-glow), var(--destructive-glow);
+}
+.btn-destructive:hover {
+  background: var(--destructive-grad-hover);
+  box-shadow: var(--destructive-inner-top), var(--destructive-inner-glow), var(--destructive-glow-hover);
+  transform: translateY(calc(-1 * var(--space-0-5)));
+}
+.btn-destructive:active {
+  background: var(--destructive-grad-active);
+  transform: translateY(0);
+}
+.btn-destructive:focus-visible {
+  box-shadow: var(--destructive-inner-top), var(--destructive-inner-glow), var(--destructive-glow), var(--destructive-focus-ring);
+}
+
+/* ─── Link ──────────────────────────────────────────────────────────── */
+.btn-link {
+  background: transparent;
+  color: var(--brand-600);
+  padding: var(--space-1-5) var(--space-1);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  position: relative;
+}
+.btn-link::after {
+  content: '';
+  position: absolute;
+  left: var(--space-1);
+  right: var(--space-1);
+  bottom: var(--space-1);
+  height: var(--border);
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.btn-link:hover::after { transform: scaleX(1); }

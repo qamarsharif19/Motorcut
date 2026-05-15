@@ -1,0 +1,59 @@
+/* ═══════════════════════════════════════════════════════════════════
+   MotorCut V4 — Card primitive CSS
+   ───────────────────────────────────────────────────────────────────
+   Ported from V4 app DS (card.css base section). Drops the AdvertCard
+   image-as-surface state machinery — that stays in the app.
+   Reusable shell. Every marketing card composition extends this.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* ─── Structured slots ─────────────────────────────────────────── */
+
+.card__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-5) var(--space-5) 0;
+}
+
+.card__title {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--n-900);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  margin: 0;
+}
+
+.card__description {
+  font-family: var(--font-family-sans);
+  font-size: var(--text-sm);
+  color: var(--n-500);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+.card__content {
+  padding: var(--space-5);
+}
+
+.card__footer {
+  padding: 0 var(--space-5) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
