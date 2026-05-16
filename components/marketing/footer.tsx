@@ -45,14 +45,17 @@ export const Footer = React.forwardRef<HTMLElement, FooterProps>(
         <div className="mc-footer__grid">
           <div className="mc-footer__brand-col">
             <Link href="/" className="mc-footer__brand-link" aria-label="MotorCut — home">
-              <Image
-                src="/logos/motorcut-wordmark-dark.png"
-                alt="MotorCut"
-                width={160}
-                height={32}
-                className="mc-footer__brand-img"
-                style={{ width: "auto" }}
-              />
+             <Image
+  src="/logos/motorcut-wordmark-dark.png"
+  alt="MotorCut"
+  width={160}
+  height={32}
+  className="mc-footer__brand-img"
+  style={{
+    width: "auto",
+    height: "auto",
+  }}
+/>
             </Link>
             <p className="mc-footer__tagline">{tagline}</p>
           </div>

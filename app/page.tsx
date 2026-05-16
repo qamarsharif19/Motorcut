@@ -2,7 +2,8 @@
 import { TopNav, type NavItem } from "@/components/marketing/top-nav";
 import { Footer } from "@/components/marketing/footer";
 import { AnnouncementBanner } from "@/components/marketing/announcement-banner";
-
+import { Hero } from "@/components/marketing/Hero-with-group=of-images";
+import { HeroSection, LogosSection } from "@/components/marketing/hero-one";
 const navItems: NavItem[] = [
   {
     type: "dropdown",
@@ -51,6 +52,28 @@ const navItems: NavItem[] = [
 ];
 
 export default function Home() {
+  const logos = [
+  {
+    src: "https://storage.efferd.com/logo/nvidia-wordmark.svg",
+    alt: "Nvidia Logo",
+  },
+  {
+    src: "https://storage.efferd.com/logo/supabase-wordmark.svg",
+    alt: "Supabase Logo",
+  },
+  {
+    src: "https://storage.efferd.com/logo/openai-wordmark.svg",
+    alt: "OpenAI Logo",
+  },
+  {
+    src: "https://storage.efferd.com/logo/turso-wordmark.svg",
+    alt: "Turso Logo",
+  },
+  {
+    src: "https://storage.efferd.com/logo/vercel-wordmark.svg",
+    alt: "Vercel Logo",
+  },
+];
   return (
     <>
       <AnnouncementBanner
@@ -67,8 +90,10 @@ export default function Home() {
         ctaHref="https://app.motorcut.com/signup"
       />
 
-      <main>
-        {/* Page content goes here */}
+   <main>
+      
+        {/* optional */}
+        { <HeroSection />}
       </main>
 
       <Footer
